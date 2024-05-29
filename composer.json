@@ -2,7 +2,7 @@
     "name": "bymayo/pdf-transform",
     "description": "Transform a PDF page to an image (JPEG, PNG)",
     "type": "craft-plugin",
-    "version": "2.0.1",
+    "version": "5.0.0",
     "keywords": [
         "craft",
         "cms",
@@ -11,7 +11,7 @@
         "pdf transform"
     ],
     "support": {
-        "docs": "https://github.com/bymayo/craft-pdf-transform/blob/master/README.md",
+        "docs": "https://github.com/bymayo/craft-pdf-transform/blob/craft-5/README.md",
         "issues": "https://github.com/bymayo/craft-pdf-transform/issues"
     },
     "license": "MIT",
@@ -22,8 +22,8 @@
         }
     ],
     "require": {
-        "craftcms/cms": "^4.0.0",
-        "spatie/pdf-to-image": "^2.0"
+        "craftcms/cms": "^5.0.0",
+        "spatie/pdf-to-image": "^2.3.0"
     },
     "autoload": {
         "psr-4": {
@@ -35,7 +35,7 @@
         "handle": "pdf-transform",
         "hasCpSettings": true,
         "hasCpSection": false,
-        "changelogUrl": "https://raw.githubusercontent.com/bymayo/craft-pdf-transform/master/CHANGELOG.md",
+        "changelogUrl": "https://raw.githubusercontent.com/bymayo/craft-pdf-transform/craft-5/CHANGELOG.md",
         "components": {
             "pdfTransformService": "bymayo\\pdftransform\\services\\PdfTransformService"
         },
