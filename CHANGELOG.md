@@ -1,5 +1,9 @@
 # PDF Transform Changelog
 
+## 5.0.0 - 2024-05-30
+### Changed
+- Craft 5 compatibility
+
 ## 2.0.1 - 2022-11-14
 ### Added
 - Amazon S3 Compatability
