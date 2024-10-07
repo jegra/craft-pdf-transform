@@ -109,26 +109,18 @@ class PdfTransformService extends Component
       $volume = $this->getImageVolume();
 
       try {
-
         $pathService = Craft::$app->getPath();
         $tempPath = $pathService->getTempPath(true) . '/' . mt_rand(0, 9999999) . '.png';
 
-
         // ----------------------------------------------------------
-        // JG EDIT: Allow for download without SSL check for local 
-        // usage, where SSL may not be available
-        
-        $stream_opts = [
-          "ssl" => [
-            "verify_peer" => false,
-            "verify_peer_name" => false,
-          ],
-        ];
-        
-        $response = file_get_contents($asset->url, false, stream_context_create($stream_opts));
-        
-        file_put_contents($tempPath, $response);
-        // file_put_contents($tempPath, file_get_contents($asset->url));
+        // JG EDIT: Use local file paths, to avoid issues with
+        // file_get_contents and allow for local file copy
+
+        // Get the local file path of the asset
+        $localFilePath = $asset->getVolume()->getRootPath() . '/' . $asset->getPath();
+
+        // Copy the file to the temporary path
+        copy($localFilePath, $tempPath);
         // ----------------------------------------------------------
 
   
