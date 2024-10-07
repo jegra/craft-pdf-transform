@@ -112,7 +112,25 @@ class PdfTransformService extends Component
 
         $pathService = Craft::$app->getPath();
         $tempPath = $pathService->getTempPath(true) . '/' . mt_rand(0, 9999999) . '.png';
-        file_put_contents($tempPath, file_get_contents($asset->url));
+
+
+        // ----------------------------------------------------------
+        // JG EDIT: Allow for download without SSL check for local 
+        // usage, where SSL may not be available
+        
+        $stream_opts = [
+          "ssl" => [
+            "verify_peer" => false,
+            "verify_peer_name" => false,
+          ],
+        ];
+        
+        $response = file_get_contents($asset->url, false, stream_context_create($stream_opts));
+        
+        file_put_contents($tempPath, $response);
+        // file_put_contents($tempPath, file_get_contents($asset->url));
+        // ----------------------------------------------------------
+
   
         $tempPathTransform = $pathService->getTempPath(true) . '/' . $filename;
   
